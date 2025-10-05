@@ -1,0 +1,182 @@
+[
+  {
+    "species": "Cattle",
+    "category": "Dairy",
+    "identifier": "COW-001",
+    "birthDate": "2023-01-15",
+    "gender": "Female",
+    "weight": 450,
+    "status": "Active",
+    "notes": "Holstein dairy cow"
+  },
+  {
+    "species": "Cattle",
+    "category": "Beef",
+    "identifier": "COW-002",
+    "birthDate": "2023-03-20",
+    "gender": "Male",
+    "weight": 525,
+    "status": "Active",
+    "notes": "Angus beef cattle"
+  },
+  {
+    "species": "Cattle",
+    "category": "Dairy",
+    "identifier": "COW-003",
+    "birthDate": "2022-11-10",
+    "gender": "Female",
+    "weight": 470,
+    "status": "Active",
+    "notes": "Jersey dairy cow"
+  },
+  {
+    "species": "Cattle",
+    "category": "Beef",
+    "identifier": "COW-004",
+    "birthDate": "2023-05-05",
+    "gender": "Male",
+    "weight": 510,
+    "status": "Sold",
+    "notes": "Limousin beef cattle"
+  },
+  {
+    "species": "Chicken",
+    "category": "Layer",
+    "identifier": "CHK-001",
+    "birthDate": "2024-02-01",
+    "gender": "Female",
+    "weight": 2.1,
+    "status": "Active",
+    "notes": "Rhode Island Red laying hen"
+  },
+  {
+    "species": "Chicken",
+    "category": "Broiler",
+    "identifier": "CHK-002",
+    "birthDate": "2024-02-15",
+    "gender": "Male",
+    "weight": 2.5,
+    "status": "Active",
+    "notes": "Cornish Cross broiler"
+  },
+  {
+    "species": "Chicken",
+    "category": "Layer",
+    "identifier": "CHK-003",
+    "birthDate": "2024-01-10",
+    "gender": "Female",
+    "weight": 2.0,
+    "status": "Active",
+    "notes": "Leghorn laying hen"
+  },
+  {
+    "species": "Chicken",
+    "category": "Broiler",
+    "identifier": "CHK-004",
+    "birthDate": "2024-03-01",
+    "gender": "Male",
+    "weight": 2.7,
+    "status": "Sold",
+    "notes": "Ross broiler"
+  },
+  {
+    "species": "Pig",
+    "category": "Grower",
+    "identifier": "PIG-001",
+    "birthDate": "2024-01-01",
+    "gender": "Male",
+    "weight": 75,
+    "status": "Active",
+    "notes": "Yorkshire grower pig"
+  },
+  {
+    "species": "Pig",
+    "category": "Breeder",
+    "identifier": "PIG-002",
+    "birthDate": "2023-09-15",
+    "gender": "Female",
+    "weight": 120,
+    "status": "Active",
+    "notes": "Landrace breeder pig"
+  },
+  {
+    "species": "Pig",
+    "category": "Grower",
+    "identifier": "PIG-003",
+    "birthDate": "2024-02-10",
+    "gender": "Male",
+    "weight": 80,
+    "status": "Active",
+    "notes": "Duroc grower pig"
+  },
+  {
+    "species": "Pig",
+    "category": "Breeder",
+    "identifier": "PIG-004",
+    "birthDate": "2023-08-20",
+    "gender": "Female",
+    "weight": 130,
+    "status": "Sold",
+    "notes": "Large White breeder pig"
+  },
+  {
+    "species": "Goat",
+    "category": "Dairy",
+    "identifier": "GOAT-001",
+    "birthDate": "2023-04-12",
+    "gender": "Female",
+    "weight": 55,
+    "status": "Active",
+    "notes": "Saanen dairy goat"
+  },
+  {
+    "species": "Goat",
+    "category": "Meat",
+    "identifier": "GOAT-002",
+    "birthDate": "2023-06-18",
+    "gender": "Male",
+    "weight": 60,
+    "status": "Active",
+    "notes": "Boer meat goat"
+  },
+  {
+    "species": "Sheep",
+    "category": "Wool",
+    "identifier": "SHP-001",
+    "birthDate": "2023-02-25",
+    "gender": "Female",
+    "weight": 45,
+    "status": "Active",
+    "notes": "Merino wool sheep"
+  },
+  {
+    "species": "Sheep",
+    "category": "Meat",
+    "identifier": "SHP-002",
+    "birthDate": "2023-05-30",
+    "gender": "Male",
+    "weight": 50,
+    "status": "Active",
+    "notes": "Dorper meat sheep"
+  },
+  {
+    "species": "Duck",
+    "category": "Layer",
+    "identifier": "DUCK-001",
+    "birthDate": "2024-03-05",
+    "gender": "Female",
+    "weight": 2.8,
+    "status": "Active",
+    "notes": "Khaki Campbell laying duck"
+  },
+  {
+    "species": "Duck",
+    "category": "Meat",
+    "identifier": "DUCK-002",
+    "birthDate": "2024-03-10",
+    "gender": "Male",
+    "weight": 3.2,
+    "status": "Active",
+    "notes": "Pekin meat duck"
+  }
+]

@@ -1,0 +1,6 @@
+node_modules
+dev-data
+.vscode
+config.env
+*.log
+.env

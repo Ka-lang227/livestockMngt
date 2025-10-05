@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "role": "admin",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": true
+  },
+  {
+    "name": "Brian Smith",
+    "email": "brian.smith@example.com",
+    "role": "manager",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": false
+  },
+  {
+    "name": "Cynthia Lee",
+    "email": "cynthia.lee@example.com",
+    "role": "worker",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": true
+  },
+  {
+    "name": "David Brown",
+    "email": "david.brown@example.com",
+    "role": "worker",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": false
+  },
+  {
+    "name": "Emma Davis",
+    "email": "emma.davis@example.com",
+    "role": "manager",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": true
+  },
+  {
+    "name": "Frank Wilson",
+    "email": "frank.wilson@example.com",
+    "role": "worker",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": false
+  },
+  {
+    "name": "Grace Thompson",
+    "email": "grace.thompson@example.com",
+    "role": "admin",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": true
+  },
+  {
+    "name": "Henry Martinez",
+    "email": "henry.martinez@example.com",
+    "role": "worker",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": true
+  },
+  {
+    "name": "Isabella Taylor",
+    "email": "isabella.taylor@example.com",
+    "role": "manager",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": false
+  },
+  {
+    "name": "James Anderson",
+    "email": "james.anderson@example.com",
+    "role": "worker",
+    "password": "Password123!",
+    "passwordConfirm": "Password123!",
+    "isVerified": true
+  }
+]
