@@ -112,12 +112,33 @@ app.use((req, res, next) => {
   next();
 });
 
+// Root route - API information
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Welcome to Livestock Management API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/v1/health',
+      users: '/api/v1/users',
+      livestock: '/api/v1/livestock',
+      housing: '/api/v1/housing',
+      performance: '/api/v1/performance',
+      expenses: '/api/v1/expenses',
+      sales: '/api/v1/sales'
+    },
+    documentation: 'Please refer to API documentation for usage',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Health check route
 app.get('/api/v1/health', (req, res) => {
   res.status(200).json({
     status: 'success',
     message: 'API is healthy',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
   });
 });
 
