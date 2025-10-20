@@ -17,7 +17,7 @@ const {
   restrictTo
 } = require('./../controllers/authController');
 
-// router.use(protect);
+router.use(protect);
 
 // Base routes
 router.route('/')

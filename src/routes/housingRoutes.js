@@ -21,7 +21,7 @@ const {
 const housingUnitRouter = express.Router();
 
 
-// router.use(protect);
+router.use(protect);
 // Base routes
 router.get('/', getAllHousing);
 router.post('/', restrictTo('manager', 'admin'), createHousing);
