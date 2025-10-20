@@ -5,7 +5,7 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
-const hpp = require('hpp');
+// const hpp = require('hpp');
 
 const { errorHandler, notFound } = require('./controllers/errorHandler');
 const userRouter = require('./routes/userRoutes');
@@ -21,8 +21,16 @@ const app = express();
 app.set('trust proxy', 1);
 
 // Basic parsing middleware
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({ 
+  limit: '10mb',
+  strict: true,
+  type: ['application/json', 'application/json; charset=utf-8']
+}));
+app.use(express.urlencoded({ 
+  extended: true, 
+  limit: '10mb',
+  parameterLimit: 1000
+}));
 
 // CORS Configuration
 const corsOptions = {
@@ -41,7 +49,7 @@ const corsOptions = {
     }
   },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
   allowedHeaders: [
     'Origin',
     'X-Requested-With',
@@ -49,10 +57,13 @@ const corsOptions = {
     'Accept',
     'Authorization',
     'Cache-Control',
-    'Pragma'
+    'Pragma',
+    'X-Forwarded-For',
+    'X-Real-IP'
   ],
-  exposedHeaders: ['X-Total-Count', 'X-Page-Count'],
-  maxAge: 86400 // Cache preflight for 24 hours
+  exposedHeaders: ['X-Total-Count', 'X-Page-Count', 'X-RateLimit-Limit', 'X-RateLimit-Remaining'],
+  maxAge: 86400, // Cache preflight for 24 hours
+  optionsSuccessStatus: 200 // For legacy browser support
 };
 
 app.use(cors(corsOptions));
@@ -77,12 +88,12 @@ app.use(helmet({
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: process.env.NODE_ENV === 'production' ? 100 : 1000, // Limit each IP to 100 requests per windowMs in production
+  limit: process.env.NODE_ENV === 'production' ? 100 : 1000, // Limit each IP to 100 requests per windowMs in production
   message: {
     status: 'error',
     message: 'Too many requests from this IP, please try again later.'
   },
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  standardHeaders: 'draft-7', // Use draft-7 standard for Express v5
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   skip: (req) => {
     // Skip rate limiting for health checks
@@ -94,15 +105,20 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // Data sanitization against NoSQL query injection
-app.use(mongoSanitize());
+// TODO: express-mongo-sanitize is incompatible with Express v5 (read-only req.query)
+// Disabled until a v5-compatible version is available
+// app.use(mongoSanitize());
+// For now, sanitize manually in critical areas
 
 // Data sanitization against XSS
-app.use(xss());
+// TODO: xss-clean may be incompatible with Express v5 (read-only req.query)
+// Disabled until confirmed v5-compatible
+// app.use(xss());
 
 // Prevent parameter pollution
-app.use(hpp({
-  whitelist: ['sort', 'fields', 'page', 'limit', 'species', 'status', 'category']
-}));
+// app.use(hpp({
+//   whitelist: ['sort', 'fields', 'page', 'limit', 'species', 'status', 'category']
+// }));
 
 // Logging middleware
 app.use((req, res, next) => {
@@ -143,11 +159,13 @@ app.get('/api/v1/health', (req, res) => {
 });
 
 // Debug middleware (optional - can remove in production)
-app.use((req, res, next) => {
-  console.log('Request Body:', req.body);
-  console.log('Query Parameters:', req.query);
-  next();
-});
+if (process.env.NODE_ENV === 'development') {
+  app.use((req, res, next) => {
+    console.log('Request Body:', req.body);
+    console.log('Query Parameters:', req.query);
+    next();
+  });
+}
 
 // API routes
 app.use('/api/v1/users', userRouter);

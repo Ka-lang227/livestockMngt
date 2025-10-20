@@ -33,8 +33,8 @@ router
   .delete(restrictTo('manager', 'admin'), deleteSale);
 
 // Batch sale routes 
-router.
-  route('/batch')
+router
+  .route('/batch')
   .get(getAllBatchSales);
 router
   .route('/batch/:id')

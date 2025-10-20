@@ -1,8 +1,9 @@
 class QueryBuilder {
   constructor(query, queryString) {
     this.query = query;
-    // Ensure queryString is an object
-    this.queryString = queryString || {};
+    // Ensure queryString is an object and create a mutable copy for Express v5
+    // In Express v5, req.query is read-only, so we need to create a new object
+    this.queryString = queryString ? { ...queryString } : {};
   }
 
   filter() {

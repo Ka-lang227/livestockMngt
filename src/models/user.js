@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const mongoose = require('mongoose');
-const validator = require('validator');
+const Validator = require('validator.js');
+const Assert = Validator.Assert;
 const bcrypt = require('bcryptjs');
 
 
@@ -16,7 +17,14 @@ const userSchema = new mongoose.Schema(
       required: [true, 'users email is required'],
       unique: true,
       lowercase: true,
-      validate: [validator.isEmail, 'Please provide a valid email']
+      validate: {
+        validator: function(value) {
+          // Email regex validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailRegex.test(value);
+        },
+        message: 'Please provide a valid email'
+      }
     },
     role: {
       type: String,
