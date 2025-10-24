@@ -128,6 +128,7 @@ userSchema.methods.createPasswordResetToken = function() {
   return resetToken;
 };
 
+// create verification token 
 userSchema.methods.createVerificationToken = function() {
   const verificationToken = crypto.randomBytes(32).toString('hex');
 

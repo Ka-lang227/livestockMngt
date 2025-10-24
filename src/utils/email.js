@@ -1,26 +1,28 @@
 const nodemailer = require('nodemailer');
 
-const sendEmail = async options => {
-  // 1) Create a transporter
+const sendEmail = async (options) => {
+  const isProduction = process.env.NODE_ENV === 'production';
+
   const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
+    host: isProduction ? process.env.EMAIL_HOST_PROD : process.env.EMAIL_HOST_DEV,
+    port: isProduction ? process.env.EMAIL_PORT_PROD : process.env.EMAIL_PORT_DEV,
     auth: {
-      user: process.env.EMAIL_USERNAME,
-      pass: process.env.EMAIL_PASSWORD
-    }
+      user: isProduction ? process.env.EMAIL_USERNAME_PROD : process.env.EMAIL_USERNAME_DEV,
+      pass: isProduction ? process.env.EMAIL_PASSWORD_PROD : process.env.EMAIL_PASSWORD_DEV,
+    },
   });
 
-  // 2) Define the email options
   const mailOptions = {
-    from: 'John Doe <hello@john.io>',
+    from: isProduction ? process.env.EMAIL_FROM_PROD : process.env.EMAIL_FROM_DEV,
     to: options.email,
     subject: options.subject,
-    text: options.message
-    // html:
+    text: options.message,
+    html: options.html || `<div style="font-family:Arial,sans-serif;line-height:1.6">
+      <h2>${options.subject}</h2>
+      <p>${options.message.replace(/\n/g, '<br>')}</p>
+    </div>`,
   };
 
-  // 3) Actually send the email
   await transporter.sendMail(mailOptions);
 };
 
