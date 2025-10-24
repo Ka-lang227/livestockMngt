@@ -86,6 +86,7 @@ const errorHandler = (err, req, res, next) => {
   // Send error response
   if (error.isOperational) {
     // Operational, trusted error: send message to client
+    console.log(err)
     res.status(error.statusCode).json(formatError(error, isDevelopment));
   } else {
     // Programming or other unknown error: don't leak error details

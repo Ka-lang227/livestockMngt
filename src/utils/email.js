@@ -6,6 +6,7 @@ const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport({
     host: isProduction ? process.env.EMAIL_HOST_PROD : process.env.EMAIL_HOST_DEV,
     port: isProduction ? process.env.EMAIL_PORT_PROD : process.env.EMAIL_PORT_DEV,
+    secure: true,
     auth: {
       user: isProduction ? process.env.EMAIL_USERNAME_PROD : process.env.EMAIL_USERNAME_DEV,
       pass: isProduction ? process.env.EMAIL_PASSWORD_PROD : process.env.EMAIL_PASSWORD_DEV,
