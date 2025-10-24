@@ -57,6 +57,14 @@ exports.signup = catchAsync(async (req, res, next) => {
   const message = `Welcome! Please verify your email by clicking on this link: ${verificationURL}\nThe link is valid for 24 hours.`;
 
   try {
+    console.log('📧 Attempting to send email to:', newUser.email);
+    console.log('📧 NODE_ENV:', process.env.NODE_ENV);
+    console.log('📧 Email config:', {
+      host: process.env.EMAIL_HOST_DEV,
+      port: process.env.EMAIL_PORT_DEV,
+      user: process.env.EMAIL_USERNAME_DEV ? process.env.EMAIL_USERNAME_DEV.substring(0, 4) + '...' : 'NOT SET',
+      hasPassword: !!process.env.EMAIL_PASSWORD_DEV
+    });
     // Try to send the email first
     await sendEmail({
       email: newUser.email,
