@@ -33,3 +33,4 @@ dev-data/
 # IDE
 .vscode/
 dev-data/
+package-lock.json
