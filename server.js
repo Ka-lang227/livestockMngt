@@ -7,7 +7,7 @@ const { handleUncaughtException, handleUnhandledRejection } = require('./src/con
 handleUncaughtException();
 
 // Load environment variables
-dotenv.config({ path: path.join(__dirname, './config.env') });
+dotenv.config({ path: './config.env' });
 
 // Database connection
 const DB = process.env.DATABASE?.replace('<PASSWORD>', process.env.DATABASE_PASSWORD) 
